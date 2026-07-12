@@ -141,3 +141,14 @@ model Department {
   @@index([status])
   @@map("department")
 }
+model CarbonRecord {
+  id          String   @id @default(cuid())
+  companyId   String
+  co2Amount   Float
+  category    String   
+  
+  timestamp   DateTime @default(now())
+
+  prevHash    String   @default("")
+  hash        String   @default("")
+}
