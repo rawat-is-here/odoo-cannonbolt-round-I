@@ -12,32 +12,8 @@ export async function POST(request: Request) {
 
     if (!session) {
       return NextResponse.json(
-        { message: "You must be logged in." },
+        { message: "You must sign in first." },
         { status: 401 },
-      );
-    }
-
-    const currentUser = await prisma.user.findUnique({
-      where: {
-        id: session.user.id,
-      },
-      select: {
-        organizationId: true,
-        status: true,
-      },
-    });
-
-    if (!currentUser) {
-      return NextResponse.json(
-        { message: "User account was not found." },
-        { status: 404 },
-      );
-    }
-
-    if (currentUser.organizationId) {
-      return NextResponse.json(
-        { message: "You already belong to an organization." },
-        { status: 409 },
       );
     }
 
@@ -51,6 +27,32 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { message: "Organization join code is required." },
         { status: 400 },
+      );
+    }
+
+    const currentUser = await prisma.user.findUnique({
+      where: {
+        id: session.user.id,
+      },
+      select: {
+        id: true,
+        organizationId: true,
+        role: true,
+        status: true,
+      },
+    });
+
+    if (!currentUser) {
+      return NextResponse.json(
+        { message: "User account was not found." },
+        { status: 404 },
+      );
+    }
+
+    if (currentUser.organizationId) {
+      return NextResponse.json(
+        { message: "Your account already belongs to an organization." },
+        { status: 409 },
       );
     }
 
@@ -74,30 +76,28 @@ export async function POST(request: Request) {
 
     await prisma.user.update({
       where: {
-        id: session.user.id,
+        id: currentUser.id,
       },
       data: {
         organizationId: organization.id,
         departmentId: null,
         role: "EMPLOYEE",
         status: "PENDING",
-        designation: null,
       },
     });
 
-    return NextResponse.json(
-      {
-        message:
-          "Join request submitted. Your administrator must assign your department and approve your account.",
-        organizationName: organization.name,
+    return NextResponse.json({
+      message: `Join request submitted to ${organization.name}.`,
+      organization: {
+        id: organization.id,
+        name: organization.name,
       },
-      { status: 200 },
-    );
+    });
   } catch (error) {
     console.error("Organization join failed:", error);
 
     return NextResponse.json(
-      { message: "Unable to submit your organization join request." },
+      { message: "Unable to submit organization join request." },
       { status: 500 },
     );
   }

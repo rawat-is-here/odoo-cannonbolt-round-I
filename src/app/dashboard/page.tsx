@@ -2,19 +2,8 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/lib/auth";
+import { DEPARTMENT_CODE_TO_ROUTE } from "@/lib/dashboard-config";
 import { prisma } from "@/lib/prisma";
-
-const DEPARTMENT_ROUTES: Record<string, string> = {
-  ADMIN: "/dashboard/admin",
-  HR: "/dashboard/hr",
-  FIN: "/dashboard/finance",
-  PUR: "/dashboard/purchase",
-  MFG: "/dashboard/manufacturing",
-  TRN: "/dashboard/transport",
-  WH: "/dashboard/warehouse",
-  COMP: "/dashboard/compliance",
-  ESG: "/dashboard/sustainability",
-};
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -29,7 +18,11 @@ export default async function DashboardPage() {
     where: {
       id: session.user.id,
     },
-    include: {
+    select: {
+      organizationId: true,
+      departmentId: true,
+      role: true,
+      status: true,
       department: {
         select: {
           code: true,
@@ -43,7 +36,7 @@ export default async function DashboardPage() {
   }
 
   if (!user.organizationId) {
-    redirect("/");
+    redirect("/onboarding/join");
   }
 
   if (user.status === "PENDING") {
@@ -54,20 +47,23 @@ export default async function DashboardPage() {
     redirect("/account-suspended");
   }
 
+  if (user.status !== "ACTIVE") {
+    redirect("/pending-approval");
+  }
+
   if (user.role === "ORG_ADMIN") {
-    redirect("/dashboard/employees");
+    redirect("/dashboard/admin");
   }
 
-  if (!user.department) {
+  if (!user.departmentId || !user.department) {
     redirect("/pending-approval");
   }
 
-  const departmentRoute =
-    DEPARTMENT_ROUTES[user.department.code];
+  const route = DEPARTMENT_CODE_TO_ROUTE[user.department.code];
 
-  if (!departmentRoute) {
+  if (!route) {
     redirect("/pending-approval");
   }
 
-  redirect(departmentRoute);
+  redirect(route);
 }
