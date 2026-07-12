@@ -16,3 +16,39 @@ export const UserStatus = {
 } as const
 
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const EmissionScope = {
+  SCOPE_1: 'SCOPE_1',
+  SCOPE_2: 'SCOPE_2',
+  SCOPE_3: 'SCOPE_3'
+} as const
+
+export type EmissionScope = (typeof EmissionScope)[keyof typeof EmissionScope]
+
+
+export const CarbonRecordStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type CarbonRecordStatus = (typeof CarbonRecordStatus)[keyof typeof CarbonRecordStatus]
+
+
+export const FactorStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type FactorStatus = (typeof FactorStatus)[keyof typeof FactorStatus]
+
+
+export const DataQuality = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  ESTIMATED: 'ESTIMATED'
+} as const
+
+export type DataQuality = (typeof DataQuality)[keyof typeof DataQuality]

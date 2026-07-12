@@ -56,7 +56,9 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Organization: 'Organization',
-  Department: 'Department'
+  Department: 'Department',
+  EmissionFactor: 'EmissionFactor',
+  CarbonRecord: 'CarbonRecord'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -172,6 +174,74 @@ export const DepartmentScalarFieldEnum = {
 export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
 
 
+export const EmissionFactorScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  departmentCode: 'departmentCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  scope: 'scope',
+  inputUnit: 'inputUnit',
+  outputUnit: 'outputUnit',
+  factorValue: 'factorValue',
+  country: 'country',
+  region: 'region',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceYear: 'sourceYear',
+  version: 'version',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmissionFactorScalarFieldEnum = (typeof EmissionFactorScalarFieldEnum)[keyof typeof EmissionFactorScalarFieldEnum]
+
+
+export const CarbonRecordScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  submittedById: 'submittedById',
+  approvedById: 'approvedById',
+  emissionFactorId: 'emissionFactorId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  scope: 'scope',
+  activityAmount: 'activityAmount',
+  activityUnit: 'activityUnit',
+  factorValue: 'factorValue',
+  factorUnit: 'factorUnit',
+  co2eAmount: 'co2eAmount',
+  co2eUnit: 'co2eUnit',
+  calculationMethod: 'calculationMethod',
+  calculationFormula: 'calculationFormula',
+  dataQuality: 'dataQuality',
+  notes: 'notes',
+  activityData: 'activityData',
+  evidenceUrl: 'evidenceUrl',
+  status: 'status',
+  occurredAt: 'occurredAt',
+  submittedAt: 'submittedAt',
+  approvedAt: 'approvedAt',
+  prevHash: 'prevHash',
+  hash: 'hash',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarbonRecordScalarFieldEnum = (typeof CarbonRecordScalarFieldEnum)[keyof typeof CarbonRecordScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -262,4 +332,53 @@ export const DepartmentOrderByRelevanceFieldEnum = {
 } as const
 
 export type DepartmentOrderByRelevanceFieldEnum = (typeof DepartmentOrderByRelevanceFieldEnum)[keyof typeof DepartmentOrderByRelevanceFieldEnum]
+
+
+export const EmissionFactorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  departmentCode: 'departmentCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  inputUnit: 'inputUnit',
+  outputUnit: 'outputUnit',
+  country: 'country',
+  region: 'region',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  version: 'version',
+  description: 'description'
+} as const
+
+export type EmissionFactorOrderByRelevanceFieldEnum = (typeof EmissionFactorOrderByRelevanceFieldEnum)[keyof typeof EmissionFactorOrderByRelevanceFieldEnum]
+
+
+export const CarbonRecordOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  submittedById: 'submittedById',
+  approvedById: 'approvedById',
+  emissionFactorId: 'emissionFactorId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  activityUnit: 'activityUnit',
+  factorUnit: 'factorUnit',
+  co2eUnit: 'co2eUnit',
+  calculationMethod: 'calculationMethod',
+  calculationFormula: 'calculationFormula',
+  notes: 'notes',
+  activityData: 'activityData',
+  evidenceUrl: 'evidenceUrl',
+  prevHash: 'prevHash',
+  hash: 'hash'
+} as const
+
+export type CarbonRecordOrderByRelevanceFieldEnum = (typeof CarbonRecordOrderByRelevanceFieldEnum)[keyof typeof CarbonRecordOrderByRelevanceFieldEnum]
 

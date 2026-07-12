@@ -1,3 +1,4 @@
+import { AdminCarbonAnalytics } from "@/components/dashboard/admin-carbon-analytics";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -131,6 +132,7 @@ export default async function AdminDashboardPage() {
             </p>
           </Link>
         </div>
+        <AdminCarbonAnalytics />
       </div>
     </main>
   );

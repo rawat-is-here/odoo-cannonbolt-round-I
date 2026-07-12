@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { TransportActivityPanel } from "@/components/dashboard/transport-activity-panel";
 import type { DashboardConfig } from "@/lib/dashboard-config";
 
 type DepartmentDashboardProps = {
@@ -142,6 +142,7 @@ export function DepartmentDashboard({
               </div>
             </article>
           </div>
+          {config.code === "TRN" ? <TransportActivityPanel /> : null}
         </section>
       </div>
     </main>

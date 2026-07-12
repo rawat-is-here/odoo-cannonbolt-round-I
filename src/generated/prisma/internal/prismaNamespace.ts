@@ -389,7 +389,9 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Organization: 'Organization',
-  Department: 'Department'
+  Department: 'Department',
+  EmissionFactor: 'EmissionFactor',
+  CarbonRecord: 'CarbonRecord'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "department"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "department" | "emissionFactor" | "carbonRecord"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -805,6 +807,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    EmissionFactor: {
+      payload: Prisma.$EmissionFactorPayload<ExtArgs>
+      fields: Prisma.EmissionFactorFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmissionFactorFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmissionFactorFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        findFirst: {
+          args: Prisma.EmissionFactorFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmissionFactorFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        findMany: {
+          args: Prisma.EmissionFactorFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>[]
+        }
+        create: {
+          args: Prisma.EmissionFactorCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        createMany: {
+          args: Prisma.EmissionFactorCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.EmissionFactorDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        update: {
+          args: Prisma.EmissionFactorUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmissionFactorDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmissionFactorUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.EmissionFactorUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionFactorPayload>
+        }
+        aggregate: {
+          args: Prisma.EmissionFactorAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmissionFactor>
+        }
+        groupBy: {
+          args: Prisma.EmissionFactorGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmissionFactorGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmissionFactorCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmissionFactorCountAggregateOutputType> | number
+        }
+      }
+    }
+    CarbonRecord: {
+      payload: Prisma.$CarbonRecordPayload<ExtArgs>
+      fields: Prisma.CarbonRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CarbonRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CarbonRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.CarbonRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CarbonRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        findMany: {
+          args: Prisma.CarbonRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>[]
+        }
+        create: {
+          args: Prisma.CarbonRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        createMany: {
+          args: Prisma.CarbonRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.CarbonRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        update: {
+          args: Prisma.CarbonRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.CarbonRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CarbonRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.CarbonRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarbonRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.CarbonRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCarbonRecord>
+        }
+        groupBy: {
+          args: Prisma.CarbonRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarbonRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CarbonRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarbonRecordCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -941,6 +1075,74 @@ export const DepartmentScalarFieldEnum = {
 export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
 
 
+export const EmissionFactorScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  departmentCode: 'departmentCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  scope: 'scope',
+  inputUnit: 'inputUnit',
+  outputUnit: 'outputUnit',
+  factorValue: 'factorValue',
+  country: 'country',
+  region: 'region',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  sourceYear: 'sourceYear',
+  version: 'version',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  description: 'description',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmissionFactorScalarFieldEnum = (typeof EmissionFactorScalarFieldEnum)[keyof typeof EmissionFactorScalarFieldEnum]
+
+
+export const CarbonRecordScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  submittedById: 'submittedById',
+  approvedById: 'approvedById',
+  emissionFactorId: 'emissionFactorId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  scope: 'scope',
+  activityAmount: 'activityAmount',
+  activityUnit: 'activityUnit',
+  factorValue: 'factorValue',
+  factorUnit: 'factorUnit',
+  co2eAmount: 'co2eAmount',
+  co2eUnit: 'co2eUnit',
+  calculationMethod: 'calculationMethod',
+  calculationFormula: 'calculationFormula',
+  dataQuality: 'dataQuality',
+  notes: 'notes',
+  activityData: 'activityData',
+  evidenceUrl: 'evidenceUrl',
+  status: 'status',
+  occurredAt: 'occurredAt',
+  submittedAt: 'submittedAt',
+  approvedAt: 'approvedAt',
+  prevHash: 'prevHash',
+  hash: 'hash',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarbonRecordScalarFieldEnum = (typeof CarbonRecordScalarFieldEnum)[keyof typeof CarbonRecordScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1033,6 +1235,55 @@ export const DepartmentOrderByRelevanceFieldEnum = {
 export type DepartmentOrderByRelevanceFieldEnum = (typeof DepartmentOrderByRelevanceFieldEnum)[keyof typeof DepartmentOrderByRelevanceFieldEnum]
 
 
+export const EmissionFactorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  departmentCode: 'departmentCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  inputUnit: 'inputUnit',
+  outputUnit: 'outputUnit',
+  country: 'country',
+  region: 'region',
+  sourceName: 'sourceName',
+  sourceUrl: 'sourceUrl',
+  version: 'version',
+  description: 'description'
+} as const
+
+export type EmissionFactorOrderByRelevanceFieldEnum = (typeof EmissionFactorOrderByRelevanceFieldEnum)[keyof typeof EmissionFactorOrderByRelevanceFieldEnum]
+
+
+export const CarbonRecordOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  submittedById: 'submittedById',
+  approvedById: 'approvedById',
+  emissionFactorId: 'emissionFactorId',
+  activityCode: 'activityCode',
+  activityName: 'activityName',
+  industryCode: 'industryCode',
+  category: 'category',
+  subcategory: 'subcategory',
+  activityUnit: 'activityUnit',
+  factorUnit: 'factorUnit',
+  co2eUnit: 'co2eUnit',
+  calculationMethod: 'calculationMethod',
+  calculationFormula: 'calculationFormula',
+  notes: 'notes',
+  activityData: 'activityData',
+  evidenceUrl: 'evidenceUrl',
+  prevHash: 'prevHash',
+  hash: 'hash'
+} as const
+
+export type CarbonRecordOrderByRelevanceFieldEnum = (typeof CarbonRecordOrderByRelevanceFieldEnum)[keyof typeof CarbonRecordOrderByRelevanceFieldEnum]
+
+
 
 /**
  * Field references
@@ -1071,6 +1322,41 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'EmissionScope'
+ */
+export type EnumEmissionScopeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EmissionScope'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'FactorStatus'
+ */
+export type EnumFactorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FactorStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'DataQuality'
+ */
+export type EnumDataQualityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DataQuality'>
+    
+
+
+/**
+ * Reference to a field of type 'CarbonRecordStatus'
+ */
+export type EnumCarbonRecordStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarbonRecordStatus'>
     
 
 
@@ -1196,6 +1482,8 @@ export type GlobalOmitConfig = {
   verification?: Prisma.VerificationOmit
   organization?: Prisma.OrganizationOmit
   department?: Prisma.DepartmentOmit
+  emissionFactor?: Prisma.EmissionFactorOmit
+  carbonRecord?: Prisma.CarbonRecordOmit
 }
 
 /* Types for Logging */

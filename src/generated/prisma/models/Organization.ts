@@ -240,6 +240,8 @@ export type OrganizationWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   departments?: Prisma.DepartmentListRelationFilter
   employees?: Prisma.UserListRelationFilter
+  emissionFactors?: Prisma.EmissionFactorListRelationFilter
+  carbonRecords?: Prisma.CarbonRecordListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -257,6 +259,8 @@ export type OrganizationOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   departments?: Prisma.DepartmentOrderByRelationAggregateInput
   employees?: Prisma.UserOrderByRelationAggregateInput
+  emissionFactors?: Prisma.EmissionFactorOrderByRelationAggregateInput
+  carbonRecords?: Prisma.CarbonRecordOrderByRelationAggregateInput
   _relevance?: Prisma.OrganizationOrderByRelevanceInput
 }
 
@@ -278,6 +282,8 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   departments?: Prisma.DepartmentListRelationFilter
   employees?: Prisma.UserListRelationFilter
+  emissionFactors?: Prisma.EmissionFactorListRelationFilter
+  carbonRecords?: Prisma.CarbonRecordListRelationFilter
 }, "id" | "slug" | "gstin" | "joinCode">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -331,6 +337,8 @@ export type OrganizationCreateInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -348,6 +356,8 @@ export type OrganizationUncheckedCreateInput = {
   updatedAt?: Date | string
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -365,6 +375,8 @@ export type OrganizationUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -382,6 +394,8 @@ export type OrganizationUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -520,6 +534,36 @@ export type OrganizationUpdateOneRequiredWithoutDepartmentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutDepartmentsInput, Prisma.OrganizationUpdateWithoutDepartmentsInput>, Prisma.OrganizationUncheckedUpdateWithoutDepartmentsInput>
 }
 
+export type OrganizationCreateNestedOneWithoutEmissionFactorsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedCreateWithoutEmissionFactorsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutEmissionFactorsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneWithoutEmissionFactorsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedCreateWithoutEmissionFactorsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutEmissionFactorsInput
+  upsert?: Prisma.OrganizationUpsertWithoutEmissionFactorsInput
+  disconnect?: Prisma.OrganizationWhereInput | boolean
+  delete?: Prisma.OrganizationWhereInput | boolean
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutEmissionFactorsInput, Prisma.OrganizationUpdateWithoutEmissionFactorsInput>, Prisma.OrganizationUncheckedUpdateWithoutEmissionFactorsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutCarbonRecordsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedCreateWithoutCarbonRecordsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutCarbonRecordsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutCarbonRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedCreateWithoutCarbonRecordsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutCarbonRecordsInput
+  upsert?: Prisma.OrganizationUpsertWithoutCarbonRecordsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutCarbonRecordsInput, Prisma.OrganizationUpdateWithoutCarbonRecordsInput>, Prisma.OrganizationUncheckedUpdateWithoutCarbonRecordsInput>
+}
+
 export type OrganizationCreateWithoutEmployeesInput = {
   id?: string
   name: string
@@ -534,6 +578,8 @@ export type OrganizationCreateWithoutEmployeesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutEmployeesInput = {
@@ -550,6 +596,8 @@ export type OrganizationUncheckedCreateWithoutEmployeesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutEmployeesInput = {
@@ -582,6 +630,8 @@ export type OrganizationUpdateWithoutEmployeesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutEmployeesInput = {
@@ -598,6 +648,8 @@ export type OrganizationUncheckedUpdateWithoutEmployeesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutDepartmentsInput = {
@@ -614,6 +666,8 @@ export type OrganizationCreateWithoutDepartmentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutDepartmentsInput = {
@@ -630,6 +684,8 @@ export type OrganizationUncheckedCreateWithoutDepartmentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutDepartmentsInput = {
@@ -662,6 +718,8 @@ export type OrganizationUpdateWithoutDepartmentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutDepartmentsInput = {
@@ -678,6 +736,184 @@ export type OrganizationUncheckedUpdateWithoutDepartmentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutEmissionFactorsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutEmissionFactorsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutEmissionFactorsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedCreateWithoutEmissionFactorsInput>
+}
+
+export type OrganizationUpsertWithoutEmissionFactorsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedUpdateWithoutEmissionFactorsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedCreateWithoutEmissionFactorsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutEmissionFactorsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutEmissionFactorsInput, Prisma.OrganizationUncheckedUpdateWithoutEmissionFactorsInput>
+}
+
+export type OrganizationUpdateWithoutEmissionFactorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutEmissionFactorsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutCarbonRecordsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutCarbonRecordsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutCarbonRecordsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedCreateWithoutCarbonRecordsInput>
+}
+
+export type OrganizationUpsertWithoutCarbonRecordsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedUpdateWithoutCarbonRecordsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedCreateWithoutCarbonRecordsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutCarbonRecordsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutCarbonRecordsInput, Prisma.OrganizationUncheckedUpdateWithoutCarbonRecordsInput>
+}
+
+export type OrganizationUpdateWithoutCarbonRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutCarbonRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -688,11 +924,15 @@ export type OrganizationUncheckedUpdateWithoutDepartmentsInput = {
 export type OrganizationCountOutputType = {
   departments: number
   employees: number
+  emissionFactors: number
+  carbonRecords: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   departments?: boolean | OrganizationCountOutputTypeCountDepartmentsArgs
   employees?: boolean | OrganizationCountOutputTypeCountEmployeesArgs
+  emissionFactors?: boolean | OrganizationCountOutputTypeCountEmissionFactorsArgs
+  carbonRecords?: boolean | OrganizationCountOutputTypeCountCarbonRecordsArgs
 }
 
 /**
@@ -719,6 +959,20 @@ export type OrganizationCountOutputTypeCountEmployeesArgs<ExtArgs extends runtim
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountEmissionFactorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmissionFactorWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountCarbonRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarbonRecordWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -735,6 +989,8 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
   departments?: boolean | Prisma.Organization$departmentsArgs<ExtArgs>
   employees?: boolean | Prisma.Organization$employeesArgs<ExtArgs>
+  emissionFactors?: boolean | Prisma.Organization$emissionFactorsArgs<ExtArgs>
+  carbonRecords?: boolean | Prisma.Organization$carbonRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -759,6 +1015,8 @@ export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   departments?: boolean | Prisma.Organization$departmentsArgs<ExtArgs>
   employees?: boolean | Prisma.Organization$employeesArgs<ExtArgs>
+  emissionFactors?: boolean | Prisma.Organization$emissionFactorsArgs<ExtArgs>
+  carbonRecords?: boolean | Prisma.Organization$carbonRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -767,6 +1025,8 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     departments: Prisma.$DepartmentPayload<ExtArgs>[]
     employees: Prisma.$UserPayload<ExtArgs>[]
+    emissionFactors: Prisma.$EmissionFactorPayload<ExtArgs>[]
+    carbonRecords: Prisma.$CarbonRecordPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1123,6 +1383,8 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   departments<T extends Prisma.Organization$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   employees<T extends Prisma.Organization$employeesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  emissionFactors<T extends Prisma.Organization$emissionFactorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$emissionFactorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmissionFactorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  carbonRecords<T extends Prisma.Organization$carbonRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$carbonRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarbonRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1557,6 +1819,54 @@ export type Organization$employeesArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Organization.emissionFactors
+ */
+export type Organization$emissionFactorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmissionFactor
+   */
+  select?: Prisma.EmissionFactorSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmissionFactor
+   */
+  omit?: Prisma.EmissionFactorOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmissionFactorInclude<ExtArgs> | null
+  where?: Prisma.EmissionFactorWhereInput
+  orderBy?: Prisma.EmissionFactorOrderByWithRelationInput | Prisma.EmissionFactorOrderByWithRelationInput[]
+  cursor?: Prisma.EmissionFactorWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmissionFactorScalarFieldEnum | Prisma.EmissionFactorScalarFieldEnum[]
+}
+
+/**
+ * Organization.carbonRecords
+ */
+export type Organization$carbonRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarbonRecord
+   */
+  select?: Prisma.CarbonRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CarbonRecord
+   */
+  omit?: Prisma.CarbonRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarbonRecordInclude<ExtArgs> | null
+  where?: Prisma.CarbonRecordWhereInput
+  orderBy?: Prisma.CarbonRecordOrderByWithRelationInput | Prisma.CarbonRecordOrderByWithRelationInput[]
+  cursor?: Prisma.CarbonRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarbonRecordScalarFieldEnum | Prisma.CarbonRecordScalarFieldEnum[]
 }
 
 /**

@@ -71,3 +71,13 @@ export type Organization = Prisma.OrganizationModel
  * 
  */
 export type Department = Prisma.DepartmentModel
+/**
+ * Model EmissionFactor
+ * 
+ */
+export type EmissionFactor = Prisma.EmissionFactorModel
+/**
+ * Model CarbonRecord
+ * 
+ */
+export type CarbonRecord = Prisma.CarbonRecordModel

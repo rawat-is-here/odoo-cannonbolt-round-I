@@ -250,6 +250,7 @@ export type DepartmentWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   employees?: Prisma.UserListRelationFilter
+  carbonRecords?: Prisma.CarbonRecordListRelationFilter
 }
 
 export type DepartmentOrderByWithRelationInput = {
@@ -264,6 +265,7 @@ export type DepartmentOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
   employees?: Prisma.UserOrderByRelationAggregateInput
+  carbonRecords?: Prisma.CarbonRecordOrderByRelationAggregateInput
   _relevance?: Prisma.DepartmentOrderByRelevanceInput
 }
 
@@ -283,6 +285,7 @@ export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   employees?: Prisma.UserListRelationFilter
+  carbonRecords?: Prisma.CarbonRecordListRelationFilter
 }, "id" | "organizationId_code">
 
 export type DepartmentOrderByWithAggregationInput = {
@@ -328,6 +331,7 @@ export type DepartmentCreateInput = {
   updatedAt?: Date | string
   organization: Prisma.OrganizationCreateNestedOneWithoutDepartmentsInput
   employees?: Prisma.UserCreateNestedManyWithoutDepartmentInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentUncheckedCreateInput = {
@@ -341,6 +345,7 @@ export type DepartmentUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutDepartmentInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentUpdateInput = {
@@ -354,6 +359,7 @@ export type DepartmentUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutDepartmentsNestedInput
   employees?: Prisma.UserUpdateManyWithoutDepartmentNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateInput = {
@@ -367,6 +373,7 @@ export type DepartmentUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employees?: Prisma.UserUncheckedUpdateManyWithoutDepartmentNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentCreateManyInput = {
@@ -540,6 +547,22 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type DepartmentCreateNestedOneWithoutCarbonRecordsInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedCreateWithoutCarbonRecordsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutCarbonRecordsInput
+  connect?: Prisma.DepartmentWhereUniqueInput
+}
+
+export type DepartmentUpdateOneWithoutCarbonRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.DepartmentCreateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedCreateWithoutCarbonRecordsInput>
+  connectOrCreate?: Prisma.DepartmentCreateOrConnectWithoutCarbonRecordsInput
+  upsert?: Prisma.DepartmentUpsertWithoutCarbonRecordsInput
+  disconnect?: Prisma.DepartmentWhereInput | boolean
+  delete?: Prisma.DepartmentWhereInput | boolean
+  connect?: Prisma.DepartmentWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DepartmentUpdateToOneWithWhereWithoutCarbonRecordsInput, Prisma.DepartmentUpdateWithoutCarbonRecordsInput>, Prisma.DepartmentUncheckedUpdateWithoutCarbonRecordsInput>
+}
+
 export type DepartmentCreateWithoutEmployeesInput = {
   id?: string
   name: string
@@ -550,6 +573,7 @@ export type DepartmentCreateWithoutEmployeesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   organization: Prisma.OrganizationCreateNestedOneWithoutDepartmentsInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentUncheckedCreateWithoutEmployeesInput = {
@@ -562,6 +586,7 @@ export type DepartmentUncheckedCreateWithoutEmployeesInput = {
   status?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentCreateOrConnectWithoutEmployeesInput = {
@@ -590,6 +615,7 @@ export type DepartmentUpdateWithoutEmployeesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutDepartmentsNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateWithoutEmployeesInput = {
@@ -602,6 +628,7 @@ export type DepartmentUncheckedUpdateWithoutEmployeesInput = {
   status?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentCreateWithoutOrganizationInput = {
@@ -614,6 +641,7 @@ export type DepartmentCreateWithoutOrganizationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   employees?: Prisma.UserCreateNestedManyWithoutDepartmentInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentUncheckedCreateWithoutOrganizationInput = {
@@ -626,6 +654,7 @@ export type DepartmentUncheckedCreateWithoutOrganizationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutDepartmentInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutDepartmentInput
 }
 
 export type DepartmentCreateOrConnectWithoutOrganizationInput = {
@@ -669,6 +698,74 @@ export type DepartmentScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Department"> | Date | string
 }
 
+export type DepartmentCreateWithoutCarbonRecordsInput = {
+  id?: string
+  name: string
+  code: string
+  description?: string | null
+  employeeCount?: number
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutDepartmentsInput
+  employees?: Prisma.UserCreateNestedManyWithoutDepartmentInput
+}
+
+export type DepartmentUncheckedCreateWithoutCarbonRecordsInput = {
+  id?: string
+  organizationId: string
+  name: string
+  code: string
+  description?: string | null
+  employeeCount?: number
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  employees?: Prisma.UserUncheckedCreateNestedManyWithoutDepartmentInput
+}
+
+export type DepartmentCreateOrConnectWithoutCarbonRecordsInput = {
+  where: Prisma.DepartmentWhereUniqueInput
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedCreateWithoutCarbonRecordsInput>
+}
+
+export type DepartmentUpsertWithoutCarbonRecordsInput = {
+  update: Prisma.XOR<Prisma.DepartmentUpdateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedUpdateWithoutCarbonRecordsInput>
+  create: Prisma.XOR<Prisma.DepartmentCreateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedCreateWithoutCarbonRecordsInput>
+  where?: Prisma.DepartmentWhereInput
+}
+
+export type DepartmentUpdateToOneWithWhereWithoutCarbonRecordsInput = {
+  where?: Prisma.DepartmentWhereInput
+  data: Prisma.XOR<Prisma.DepartmentUpdateWithoutCarbonRecordsInput, Prisma.DepartmentUncheckedUpdateWithoutCarbonRecordsInput>
+}
+
+export type DepartmentUpdateWithoutCarbonRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  employeeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutDepartmentsNestedInput
+  employees?: Prisma.UserUpdateManyWithoutDepartmentNestedInput
+}
+
+export type DepartmentUncheckedUpdateWithoutCarbonRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  employeeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  employees?: Prisma.UserUncheckedUpdateManyWithoutDepartmentNestedInput
+}
+
 export type DepartmentCreateManyOrganizationInput = {
   id?: string
   name: string
@@ -690,6 +787,7 @@ export type DepartmentUpdateWithoutOrganizationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employees?: Prisma.UserUpdateManyWithoutDepartmentNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateWithoutOrganizationInput = {
@@ -702,6 +800,7 @@ export type DepartmentUncheckedUpdateWithoutOrganizationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employees?: Prisma.UserUncheckedUpdateManyWithoutDepartmentNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutDepartmentNestedInput
 }
 
 export type DepartmentUncheckedUpdateManyWithoutOrganizationInput = {
@@ -722,10 +821,12 @@ export type DepartmentUncheckedUpdateManyWithoutOrganizationInput = {
 
 export type DepartmentCountOutputType = {
   employees: number
+  carbonRecords: number
 }
 
 export type DepartmentCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   employees?: boolean | DepartmentCountOutputTypeCountEmployeesArgs
+  carbonRecords?: boolean | DepartmentCountOutputTypeCountCarbonRecordsArgs
 }
 
 /**
@@ -745,6 +846,13 @@ export type DepartmentCountOutputTypeCountEmployeesArgs<ExtArgs extends runtime.
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * DepartmentCountOutputType without action
+ */
+export type DepartmentCountOutputTypeCountCarbonRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarbonRecordWhereInput
+}
+
 
 export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -758,6 +866,7 @@ export type DepartmentSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   updatedAt?: boolean
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   employees?: boolean | Prisma.Department$employeesArgs<ExtArgs>
+  carbonRecords?: boolean | Prisma.Department$carbonRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["department"]>
 
@@ -779,6 +888,7 @@ export type DepartmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type DepartmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   employees?: boolean | Prisma.Department$employeesArgs<ExtArgs>
+  carbonRecords?: boolean | Prisma.Department$carbonRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.DepartmentCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -787,6 +897,7 @@ export type $DepartmentPayload<ExtArgs extends runtime.Types.Extensions.Internal
   objects: {
     organization: Prisma.$OrganizationPayload<ExtArgs>
     employees: Prisma.$UserPayload<ExtArgs>[]
+    carbonRecords: Prisma.$CarbonRecordPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1140,6 +1251,7 @@ export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends runti
   readonly [Symbol.toStringTag]: "PrismaPromise"
   organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   employees<T extends Prisma.Department$employeesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  carbonRecords<T extends Prisma.Department$carbonRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Department$carbonRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarbonRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1547,6 +1659,30 @@ export type Department$employeesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Department.carbonRecords
+ */
+export type Department$carbonRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarbonRecord
+   */
+  select?: Prisma.CarbonRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CarbonRecord
+   */
+  omit?: Prisma.CarbonRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarbonRecordInclude<ExtArgs> | null
+  where?: Prisma.CarbonRecordWhereInput
+  orderBy?: Prisma.CarbonRecordOrderByWithRelationInput | Prisma.CarbonRecordOrderByWithRelationInput[]
+  cursor?: Prisma.CarbonRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarbonRecordScalarFieldEnum | Prisma.CarbonRecordScalarFieldEnum[]
 }
 
 /**
