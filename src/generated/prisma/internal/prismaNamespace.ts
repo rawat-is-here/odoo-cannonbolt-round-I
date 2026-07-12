@@ -391,7 +391,9 @@ export const ModelName = {
   Organization: 'Organization',
   Department: 'Department',
   EmissionFactor: 'EmissionFactor',
-  CarbonRecord: 'CarbonRecord'
+  CarbonRecord: 'CarbonRecord',
+  EmissionPolicy: 'EmissionPolicy',
+  SocialPost: 'SocialPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "department" | "emissionFactor" | "carbonRecord"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "department" | "emissionFactor" | "carbonRecord" | "emissionPolicy" | "socialPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -939,6 +941,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    EmissionPolicy: {
+      payload: Prisma.$EmissionPolicyPayload<ExtArgs>
+      fields: Prisma.EmissionPolicyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EmissionPolicyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EmissionPolicyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        findFirst: {
+          args: Prisma.EmissionPolicyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EmissionPolicyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        findMany: {
+          args: Prisma.EmissionPolicyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>[]
+        }
+        create: {
+          args: Prisma.EmissionPolicyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        createMany: {
+          args: Prisma.EmissionPolicyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.EmissionPolicyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        update: {
+          args: Prisma.EmissionPolicyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        deleteMany: {
+          args: Prisma.EmissionPolicyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EmissionPolicyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.EmissionPolicyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EmissionPolicyPayload>
+        }
+        aggregate: {
+          args: Prisma.EmissionPolicyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmissionPolicy>
+        }
+        groupBy: {
+          args: Prisma.EmissionPolicyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmissionPolicyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EmissionPolicyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EmissionPolicyCountAggregateOutputType> | number
+        }
+      }
+    }
+    SocialPost: {
+      payload: Prisma.$SocialPostPayload<ExtArgs>
+      fields: Prisma.SocialPostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SocialPostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SocialPostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        findFirst: {
+          args: Prisma.SocialPostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SocialPostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        findMany: {
+          args: Prisma.SocialPostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>[]
+        }
+        create: {
+          args: Prisma.SocialPostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        createMany: {
+          args: Prisma.SocialPostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SocialPostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        update: {
+          args: Prisma.SocialPostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        deleteMany: {
+          args: Prisma.SocialPostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SocialPostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SocialPostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SocialPostPayload>
+        }
+        aggregate: {
+          args: Prisma.SocialPostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSocialPost>
+        }
+        groupBy: {
+          args: Prisma.SocialPostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SocialPostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SocialPostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SocialPostCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -991,7 +1125,9 @@ export const UserScalarFieldEnum = {
   designation: 'designation',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  xp: 'xp',
+  rewardPoints: 'rewardPoints'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1143,6 +1279,37 @@ export const CarbonRecordScalarFieldEnum = {
 export type CarbonRecordScalarFieldEnum = (typeof CarbonRecordScalarFieldEnum)[keyof typeof CarbonRecordScalarFieldEnum]
 
 
+export const EmissionPolicyScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  name: 'name',
+  periodDays: 'periodDays',
+  limitKgCo2e: 'limitKgCo2e',
+  warningPercent: 'warningPercent',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmissionPolicyScalarFieldEnum = (typeof EmissionPolicyScalarFieldEnum)[keyof typeof EmissionPolicyScalarFieldEnum]
+
+
+export const SocialPostScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  authorId: 'authorId',
+  content: 'content',
+  postType: 'postType',
+  likes: 'likes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SocialPostScalarFieldEnum = (typeof SocialPostScalarFieldEnum)[keyof typeof SocialPostScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1282,6 +1449,28 @@ export const CarbonRecordOrderByRelevanceFieldEnum = {
 } as const
 
 export type CarbonRecordOrderByRelevanceFieldEnum = (typeof CarbonRecordOrderByRelevanceFieldEnum)[keyof typeof CarbonRecordOrderByRelevanceFieldEnum]
+
+
+export const EmissionPolicyOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  name: 'name'
+} as const
+
+export type EmissionPolicyOrderByRelevanceFieldEnum = (typeof EmissionPolicyOrderByRelevanceFieldEnum)[keyof typeof EmissionPolicyOrderByRelevanceFieldEnum]
+
+
+export const SocialPostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  authorId: 'authorId',
+  content: 'content',
+  postType: 'postType'
+} as const
+
+export type SocialPostOrderByRelevanceFieldEnum = (typeof SocialPostOrderByRelevanceFieldEnum)[keyof typeof SocialPostOrderByRelevanceFieldEnum]
 
 
 
@@ -1484,6 +1673,8 @@ export type GlobalOmitConfig = {
   department?: Prisma.DepartmentOmit
   emissionFactor?: Prisma.EmissionFactorOmit
   carbonRecord?: Prisma.CarbonRecordOmit
+  emissionPolicy?: Prisma.EmissionPolicyOmit
+  socialPost?: Prisma.SocialPostOmit
 }
 
 /* Types for Logging */

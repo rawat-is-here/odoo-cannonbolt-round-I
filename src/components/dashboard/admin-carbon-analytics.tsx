@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import jsPDF from "jspdf";
 import {
   CartesianGrid,
   Line,
@@ -91,6 +92,65 @@ export function AdminCarbonAnalytics() {
     void loadAnalytics();
   }, [loadAnalytics]);
 
+  function downloadPdf() {
+    if (!data) return;
+
+    const pdf = new jsPDF();
+    const title = `EcoSphere Carbon Report - ${range}`;
+    pdf.setFontSize(18);
+    pdf.text(title, 14, 18);
+    pdf.setFontSize(10);
+    pdf.text(`Generated: ${new Date().toLocaleString()}`, 14, 25);
+
+    pdf.setFontSize(12);
+    pdf.text(`Total emissions: ${data.summary.totalEmissions.toFixed(2)} kgCO2e`, 14, 36);
+    pdf.text(`Records: ${data.summary.recordCount}`, 14, 43);
+    pdf.text(`Average per record: ${data.summary.averageEmission.toFixed(2)} kgCO2e`, 14, 50);
+
+    pdf.text("Scope breakdown", 14, 62);
+    pdf.setFontSize(10);
+    pdf.text(`Scope 1: ${data.scopeTotals.SCOPE_1.toFixed(2)} kgCO2e`, 18, 69);
+    pdf.text(`Scope 2: ${data.scopeTotals.SCOPE_2.toFixed(2)} kgCO2e`, 18, 75);
+    pdf.text(`Scope 3: ${data.scopeTotals.SCOPE_3.toFixed(2)} kgCO2e`, 18, 81);
+
+    pdf.setFontSize(12);
+    pdf.text("Department breakdown", 14, 93);
+    pdf.setFontSize(10);
+    let y = 100;
+    for (const department of data.departmentTotals.slice(0, 12)) {
+      pdf.text(`${department.department}: ${department.emissions.toFixed(2)} kgCO2e`, 18, y);
+      y += 6;
+    }
+
+    if (y > 165) {
+      pdf.addPage();
+      y = 20;
+    }
+
+    pdf.setFontSize(12);
+    pdf.text("Emission timeline", 14, y + 8);
+    const chartX = 18;
+    const chartY = y + 18;
+    const chartW = 175;
+    const chartH = 55;
+    pdf.rect(chartX, chartY, chartW, chartH);
+
+    const max = Math.max(...data.timeline.map((p) => p.emissions), 1);
+    data.timeline.forEach((point, index) => {
+      if (index === 0) return;
+      const prev = data.timeline[index - 1];
+      const x1 = chartX + ((index - 1) / Math.max(data.timeline.length - 1, 1)) * chartW;
+      const x2 = chartX + (index / Math.max(data.timeline.length - 1, 1)) * chartW;
+      const y1 = chartY + chartH - (prev.emissions / max) * chartH;
+      const y2 = chartY + chartH - (point.emissions / max) * chartH;
+      pdf.line(x1, y1, x2, y2);
+    });
+
+    pdf.setFontSize(8);
+    pdf.text(`Range: ${range} | Peak: ${max.toFixed(2)} kgCO2e`, 18, chartY + chartH + 7);
+    pdf.save(`ecosphere-carbon-report-${range}.pdf`);
+  }
+
   return (
     <section className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-5">
@@ -110,6 +170,14 @@ export function AdminCarbonAnalytics() {
         </div>
 
         <div className="flex flex-wrap gap-2">
+          <button
+            className="rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+            disabled={!data}
+            onClick={downloadPdf}
+            type="button"
+          >
+            Download PDF
+          </button>
           {RANGE_OPTIONS.map((option) => (
             <button
               className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${

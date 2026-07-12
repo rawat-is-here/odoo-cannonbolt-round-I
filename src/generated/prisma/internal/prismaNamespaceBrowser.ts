@@ -58,7 +58,9 @@ export const ModelName = {
   Organization: 'Organization',
   Department: 'Department',
   EmissionFactor: 'EmissionFactor',
-  CarbonRecord: 'CarbonRecord'
+  CarbonRecord: 'CarbonRecord',
+  EmissionPolicy: 'EmissionPolicy',
+  SocialPost: 'SocialPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,7 +92,9 @@ export const UserScalarFieldEnum = {
   designation: 'designation',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  xp: 'xp',
+  rewardPoints: 'rewardPoints'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -242,6 +246,37 @@ export const CarbonRecordScalarFieldEnum = {
 export type CarbonRecordScalarFieldEnum = (typeof CarbonRecordScalarFieldEnum)[keyof typeof CarbonRecordScalarFieldEnum]
 
 
+export const EmissionPolicyScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  name: 'name',
+  periodDays: 'periodDays',
+  limitKgCo2e: 'limitKgCo2e',
+  warningPercent: 'warningPercent',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EmissionPolicyScalarFieldEnum = (typeof EmissionPolicyScalarFieldEnum)[keyof typeof EmissionPolicyScalarFieldEnum]
+
+
+export const SocialPostScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  authorId: 'authorId',
+  content: 'content',
+  postType: 'postType',
+  likes: 'likes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SocialPostScalarFieldEnum = (typeof SocialPostScalarFieldEnum)[keyof typeof SocialPostScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -381,4 +416,26 @@ export const CarbonRecordOrderByRelevanceFieldEnum = {
 } as const
 
 export type CarbonRecordOrderByRelevanceFieldEnum = (typeof CarbonRecordOrderByRelevanceFieldEnum)[keyof typeof CarbonRecordOrderByRelevanceFieldEnum]
+
+
+export const EmissionPolicyOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  name: 'name'
+} as const
+
+export type EmissionPolicyOrderByRelevanceFieldEnum = (typeof EmissionPolicyOrderByRelevanceFieldEnum)[keyof typeof EmissionPolicyOrderByRelevanceFieldEnum]
+
+
+export const SocialPostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  departmentId: 'departmentId',
+  authorId: 'authorId',
+  content: 'content',
+  postType: 'postType'
+} as const
+
+export type SocialPostOrderByRelevanceFieldEnum = (typeof SocialPostOrderByRelevanceFieldEnum)[keyof typeof SocialPostOrderByRelevanceFieldEnum]
 

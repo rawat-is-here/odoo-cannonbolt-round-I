@@ -64,6 +64,10 @@ model User {
   submittedCarbonRecords CarbonRecord[] @relation("SubmittedCarbonRecords")
   approvedCarbonRecords  CarbonRecord[] @relation("ApprovedCarbonRecords")
 
+  xp           Int          @default(0)
+  rewardPoints Int          @default(0)
+  socialPosts  SocialPost[]
+
   @@index([organizationId])
   @@index([departmentId])
   @@index([status])
@@ -141,8 +145,10 @@ model Organization {
   departments Department[]
   employees   User[]
 
-  emissionFactors EmissionFactor[]
-  carbonRecords   CarbonRecord[]
+  emissionFactors  EmissionFactor[]
+  carbonRecords    CarbonRecord[]
+  emissionPolicies EmissionPolicy[]
+  socialPosts      SocialPost[]
 
   @@index([name])
   @@map("organization")
@@ -165,8 +171,10 @@ model Department {
 
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  employees     User[]
-  carbonRecords CarbonRecord[]
+  employees        User[]
+  carbonRecords    CarbonRecord[]
+  emissionPolicies EmissionPolicy[]
+  socialPosts      SocialPost[]
 
   @@unique([organizationId, code])
   @@index([organizationId])
@@ -292,4 +300,53 @@ model CarbonRecord {
   @@index([status])
   @@index([occurredAt])
   @@map("carbon_record")
+}
+
+model EmissionPolicy {
+  id String @id @default(cuid())
+
+  organizationId String
+  departmentId   String
+
+  name           String
+  periodDays     Int     @default(28)
+  limitKgCo2e    Decimal @db.Decimal(18, 3)
+  warningPercent Int     @default(80)
+  active         Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  department   Department   @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, departmentId, periodDays])
+  @@index([organizationId])
+  @@index([departmentId])
+  @@map("emission_policy")
+}
+
+model SocialPost {
+  id String @id @default(cuid())
+
+  organizationId String
+  departmentId   String?
+  authorId       String
+
+  content  String @db.Text
+  postType String @default("UPDATE")
+  likes    Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  department   Department?  @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  author       User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([departmentId])
+  @@index([authorId])
+  @@index([createdAt])
+  @@map("social_post")
 }

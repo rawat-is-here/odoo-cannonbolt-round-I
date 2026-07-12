@@ -242,6 +242,8 @@ export type OrganizationWhereInput = {
   employees?: Prisma.UserListRelationFilter
   emissionFactors?: Prisma.EmissionFactorListRelationFilter
   carbonRecords?: Prisma.CarbonRecordListRelationFilter
+  emissionPolicies?: Prisma.EmissionPolicyListRelationFilter
+  socialPosts?: Prisma.SocialPostListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -261,6 +263,8 @@ export type OrganizationOrderByWithRelationInput = {
   employees?: Prisma.UserOrderByRelationAggregateInput
   emissionFactors?: Prisma.EmissionFactorOrderByRelationAggregateInput
   carbonRecords?: Prisma.CarbonRecordOrderByRelationAggregateInput
+  emissionPolicies?: Prisma.EmissionPolicyOrderByRelationAggregateInput
+  socialPosts?: Prisma.SocialPostOrderByRelationAggregateInput
   _relevance?: Prisma.OrganizationOrderByRelevanceInput
 }
 
@@ -284,6 +288,8 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   employees?: Prisma.UserListRelationFilter
   emissionFactors?: Prisma.EmissionFactorListRelationFilter
   carbonRecords?: Prisma.CarbonRecordListRelationFilter
+  emissionPolicies?: Prisma.EmissionPolicyListRelationFilter
+  socialPosts?: Prisma.SocialPostListRelationFilter
 }, "id" | "slug" | "gstin" | "joinCode">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -339,6 +345,8 @@ export type OrganizationCreateInput = {
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -358,6 +366,8 @@ export type OrganizationUncheckedCreateInput = {
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -377,6 +387,8 @@ export type OrganizationUpdateInput = {
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -396,6 +408,8 @@ export type OrganizationUncheckedUpdateInput = {
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -564,6 +578,34 @@ export type OrganizationUpdateOneRequiredWithoutCarbonRecordsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutCarbonRecordsInput, Prisma.OrganizationUpdateWithoutCarbonRecordsInput>, Prisma.OrganizationUncheckedUpdateWithoutCarbonRecordsInput>
 }
 
+export type OrganizationCreateNestedOneWithoutEmissionPoliciesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutEmissionPoliciesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutEmissionPoliciesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutEmissionPoliciesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutEmissionPoliciesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutEmissionPoliciesInput
+  upsert?: Prisma.OrganizationUpsertWithoutEmissionPoliciesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutEmissionPoliciesInput, Prisma.OrganizationUpdateWithoutEmissionPoliciesInput>, Prisma.OrganizationUncheckedUpdateWithoutEmissionPoliciesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutSocialPostsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSocialPostsInput, Prisma.OrganizationUncheckedCreateWithoutSocialPostsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSocialPostsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutSocialPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSocialPostsInput, Prisma.OrganizationUncheckedCreateWithoutSocialPostsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSocialPostsInput
+  upsert?: Prisma.OrganizationUpsertWithoutSocialPostsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSocialPostsInput, Prisma.OrganizationUpdateWithoutSocialPostsInput>, Prisma.OrganizationUncheckedUpdateWithoutSocialPostsInput>
+}
+
 export type OrganizationCreateWithoutEmployeesInput = {
   id?: string
   name: string
@@ -580,6 +622,8 @@ export type OrganizationCreateWithoutEmployeesInput = {
   departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutEmployeesInput = {
@@ -598,6 +642,8 @@ export type OrganizationUncheckedCreateWithoutEmployeesInput = {
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutEmployeesInput = {
@@ -632,6 +678,8 @@ export type OrganizationUpdateWithoutEmployeesInput = {
   departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutEmployeesInput = {
@@ -650,6 +698,8 @@ export type OrganizationUncheckedUpdateWithoutEmployeesInput = {
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutDepartmentsInput = {
@@ -668,6 +718,8 @@ export type OrganizationCreateWithoutDepartmentsInput = {
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutDepartmentsInput = {
@@ -686,6 +738,8 @@ export type OrganizationUncheckedCreateWithoutDepartmentsInput = {
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutDepartmentsInput = {
@@ -720,6 +774,8 @@ export type OrganizationUpdateWithoutDepartmentsInput = {
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutDepartmentsInput = {
@@ -738,6 +794,8 @@ export type OrganizationUncheckedUpdateWithoutDepartmentsInput = {
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutEmissionFactorsInput = {
@@ -756,6 +814,8 @@ export type OrganizationCreateWithoutEmissionFactorsInput = {
   departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutEmissionFactorsInput = {
@@ -774,6 +834,8 @@ export type OrganizationUncheckedCreateWithoutEmissionFactorsInput = {
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
   carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutEmissionFactorsInput = {
@@ -808,6 +870,8 @@ export type OrganizationUpdateWithoutEmissionFactorsInput = {
   departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutEmissionFactorsInput = {
@@ -826,6 +890,8 @@ export type OrganizationUncheckedUpdateWithoutEmissionFactorsInput = {
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
   carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutCarbonRecordsInput = {
@@ -844,6 +910,8 @@ export type OrganizationCreateWithoutCarbonRecordsInput = {
   departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutCarbonRecordsInput = {
@@ -862,6 +930,8 @@ export type OrganizationUncheckedCreateWithoutCarbonRecordsInput = {
   departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
   employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
   emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutCarbonRecordsInput = {
@@ -896,6 +966,8 @@ export type OrganizationUpdateWithoutCarbonRecordsInput = {
   departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutCarbonRecordsInput = {
@@ -914,6 +986,200 @@ export type OrganizationUncheckedUpdateWithoutCarbonRecordsInput = {
   departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
   employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
   emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutEmissionPoliciesInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutEmissionPoliciesInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutEmissionPoliciesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutEmissionPoliciesInput>
+}
+
+export type OrganizationUpsertWithoutEmissionPoliciesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedUpdateWithoutEmissionPoliciesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutEmissionPoliciesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutEmissionPoliciesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutEmissionPoliciesInput, Prisma.OrganizationUncheckedUpdateWithoutEmissionPoliciesInput>
+}
+
+export type OrganizationUpdateWithoutEmissionPoliciesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutEmissionPoliciesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutSocialPostsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutSocialPostsInput = {
+  id?: string
+  name: string
+  legalName?: string | null
+  slug: string
+  gstin?: string | null
+  joinCode?: string | null
+  industry?: string | null
+  country?: string
+  companySize?: string | null
+  status?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutOrganizationInput
+  employees?: Prisma.UserUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedCreateNestedManyWithoutOrganizationInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutOrganizationInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutSocialPostsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSocialPostsInput, Prisma.OrganizationUncheckedCreateWithoutSocialPostsInput>
+}
+
+export type OrganizationUpsertWithoutSocialPostsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSocialPostsInput, Prisma.OrganizationUncheckedUpdateWithoutSocialPostsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSocialPostsInput, Prisma.OrganizationUncheckedCreateWithoutSocialPostsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutSocialPostsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSocialPostsInput, Prisma.OrganizationUncheckedUpdateWithoutSocialPostsInput>
+}
+
+export type OrganizationUpdateWithoutSocialPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutSocialPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  gstin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  joinCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  companySize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutOrganizationNestedInput
+  employees?: Prisma.UserUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionFactors?: Prisma.EmissionFactorUncheckedUpdateManyWithoutOrganizationNestedInput
+  carbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+  emissionPolicies?: Prisma.EmissionPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -926,6 +1192,8 @@ export type OrganizationCountOutputType = {
   employees: number
   emissionFactors: number
   carbonRecords: number
+  emissionPolicies: number
+  socialPosts: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -933,6 +1201,8 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   employees?: boolean | OrganizationCountOutputTypeCountEmployeesArgs
   emissionFactors?: boolean | OrganizationCountOutputTypeCountEmissionFactorsArgs
   carbonRecords?: boolean | OrganizationCountOutputTypeCountCarbonRecordsArgs
+  emissionPolicies?: boolean | OrganizationCountOutputTypeCountEmissionPoliciesArgs
+  socialPosts?: boolean | OrganizationCountOutputTypeCountSocialPostsArgs
 }
 
 /**
@@ -973,6 +1243,20 @@ export type OrganizationCountOutputTypeCountCarbonRecordsArgs<ExtArgs extends ru
   where?: Prisma.CarbonRecordWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountEmissionPoliciesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EmissionPolicyWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountSocialPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SocialPostWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -991,6 +1275,8 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   employees?: boolean | Prisma.Organization$employeesArgs<ExtArgs>
   emissionFactors?: boolean | Prisma.Organization$emissionFactorsArgs<ExtArgs>
   carbonRecords?: boolean | Prisma.Organization$carbonRecordsArgs<ExtArgs>
+  emissionPolicies?: boolean | Prisma.Organization$emissionPoliciesArgs<ExtArgs>
+  socialPosts?: boolean | Prisma.Organization$socialPostsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -1017,6 +1303,8 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   employees?: boolean | Prisma.Organization$employeesArgs<ExtArgs>
   emissionFactors?: boolean | Prisma.Organization$emissionFactorsArgs<ExtArgs>
   carbonRecords?: boolean | Prisma.Organization$carbonRecordsArgs<ExtArgs>
+  emissionPolicies?: boolean | Prisma.Organization$emissionPoliciesArgs<ExtArgs>
+  socialPosts?: boolean | Prisma.Organization$socialPostsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1027,6 +1315,8 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     employees: Prisma.$UserPayload<ExtArgs>[]
     emissionFactors: Prisma.$EmissionFactorPayload<ExtArgs>[]
     carbonRecords: Prisma.$CarbonRecordPayload<ExtArgs>[]
+    emissionPolicies: Prisma.$EmissionPolicyPayload<ExtArgs>[]
+    socialPosts: Prisma.$SocialPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1385,6 +1675,8 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   employees<T extends Prisma.Organization$employeesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   emissionFactors<T extends Prisma.Organization$emissionFactorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$emissionFactorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmissionFactorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   carbonRecords<T extends Prisma.Organization$carbonRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$carbonRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarbonRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  emissionPolicies<T extends Prisma.Organization$emissionPoliciesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$emissionPoliciesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmissionPolicyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  socialPosts<T extends Prisma.Organization$socialPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$socialPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SocialPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1867,6 +2159,54 @@ export type Organization$carbonRecordsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.CarbonRecordScalarFieldEnum | Prisma.CarbonRecordScalarFieldEnum[]
+}
+
+/**
+ * Organization.emissionPolicies
+ */
+export type Organization$emissionPoliciesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmissionPolicy
+   */
+  select?: Prisma.EmissionPolicySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EmissionPolicy
+   */
+  omit?: Prisma.EmissionPolicyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EmissionPolicyInclude<ExtArgs> | null
+  where?: Prisma.EmissionPolicyWhereInput
+  orderBy?: Prisma.EmissionPolicyOrderByWithRelationInput | Prisma.EmissionPolicyOrderByWithRelationInput[]
+  cursor?: Prisma.EmissionPolicyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmissionPolicyScalarFieldEnum | Prisma.EmissionPolicyScalarFieldEnum[]
+}
+
+/**
+ * Organization.socialPosts
+ */
+export type Organization$socialPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SocialPost
+   */
+  select?: Prisma.SocialPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SocialPost
+   */
+  omit?: Prisma.SocialPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SocialPostInclude<ExtArgs> | null
+  where?: Prisma.SocialPostWhereInput
+  orderBy?: Prisma.SocialPostOrderByWithRelationInput | Prisma.SocialPostOrderByWithRelationInput[]
+  cursor?: Prisma.SocialPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SocialPostScalarFieldEnum | Prisma.SocialPostScalarFieldEnum[]
 }
 
 /**

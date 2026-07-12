@@ -105,7 +105,7 @@ export default async function AdminDashboardPage() {
           </article>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <Link
             className="rounded-2xl bg-slate-950 p-7 text-white shadow-sm transition hover:bg-slate-800"
             href="/dashboard/employees"
@@ -130,6 +130,21 @@ export default async function AdminDashboardPage() {
             <p className="mt-2 text-emerald-100">
               Open the organization sustainability dashboard.
             </p>
+          </Link>
+          <Link
+            className="rounded-2xl bg-indigo-700 p-7 text-white shadow-sm transition hover:bg-indigo-800"
+            href="/dashboard/admin/governance"
+          >
+            <h2 className="text-xl font-semibold">Governance policies</h2>
+            <p className="mt-2 text-indigo-100">Set department emission limits and track violations.</p>
+          </Link>
+
+          <Link
+            className="rounded-2xl bg-amber-600 p-7 text-white shadow-sm transition hover:bg-amber-700"
+            href="/dashboard/social"
+          >
+            <h2 className="text-xl font-semibold">Social & leaderboard</h2>
+            <p className="mt-2 text-amber-100">Open the organization sustainability feed.</p>
           </Link>
         </div>
         <AdminCarbonAnalytics />

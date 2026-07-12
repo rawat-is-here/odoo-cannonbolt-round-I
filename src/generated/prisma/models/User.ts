@@ -20,8 +20,20 @@ export type UserModel = runtime.Types.Result.DefaultSelection<Prisma.$UserPayloa
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
+}
+
+export type UserAvgAggregateOutputType = {
+  xp: number | null
+  rewardPoints: number | null
+}
+
+export type UserSumAggregateOutputType = {
+  xp: number | null
+  rewardPoints: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -38,6 +50,8 @@ export type UserMinAggregateOutputType = {
   status: $Enums.UserStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  xp: number | null
+  rewardPoints: number | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -54,6 +68,8 @@ export type UserMaxAggregateOutputType = {
   status: $Enums.UserStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  xp: number | null
+  rewardPoints: number | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -70,9 +86,21 @@ export type UserCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  xp: number
+  rewardPoints: number
   _all: number
 }
 
+
+export type UserAvgAggregateInputType = {
+  xp?: true
+  rewardPoints?: true
+}
+
+export type UserSumAggregateInputType = {
+  xp?: true
+  rewardPoints?: true
+}
 
 export type UserMinAggregateInputType = {
   id?: true
@@ -88,6 +116,8 @@ export type UserMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  xp?: true
+  rewardPoints?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -104,6 +134,8 @@ export type UserMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  xp?: true
+  rewardPoints?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -120,6 +152,8 @@ export type UserCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  xp?: true
+  rewardPoints?: true
   _all?: true
 }
 
@@ -161,6 +195,18 @@ export type UserAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: UserAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UserSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: UserMinAggregateInputType
@@ -191,6 +237,8 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: UserCountAggregateInputType | true
+  _avg?: UserAvgAggregateInputType
+  _sum?: UserSumAggregateInputType
   _min?: UserMinAggregateInputType
   _max?: UserMaxAggregateInputType
 }
@@ -209,7 +257,11 @@ export type UserGroupByOutputType = {
   status: $Enums.UserStatus
   createdAt: Date
   updatedAt: Date
+  xp: number
+  rewardPoints: number
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
@@ -246,12 +298,15 @@ export type UserWhereInput = {
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  xp?: Prisma.IntFilter<"User"> | number
+  rewardPoints?: Prisma.IntFilter<"User"> | number
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
   sessions?: Prisma.SessionListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   submittedCarbonRecords?: Prisma.CarbonRecordListRelationFilter
   approvedCarbonRecords?: Prisma.CarbonRecordListRelationFilter
+  socialPosts?: Prisma.SocialPostListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -268,12 +323,15 @@ export type UserOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
   department?: Prisma.DepartmentOrderByWithRelationInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   submittedCarbonRecords?: Prisma.CarbonRecordOrderByRelationAggregateInput
   approvedCarbonRecords?: Prisma.CarbonRecordOrderByRelationAggregateInput
+  socialPosts?: Prisma.SocialPostOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -294,12 +352,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  xp?: Prisma.IntFilter<"User"> | number
+  rewardPoints?: Prisma.IntFilter<"User"> | number
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.DepartmentWhereInput> | null
   sessions?: Prisma.SessionListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   submittedCarbonRecords?: Prisma.CarbonRecordListRelationFilter
   approvedCarbonRecords?: Prisma.CarbonRecordListRelationFilter
+  socialPosts?: Prisma.SocialPostListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -316,9 +377,13 @@ export type UserOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
+  _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
+  _sum?: Prisma.UserSumOrderByAggregateInput
 }
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -338,6 +403,8 @@ export type UserScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  xp?: Prisma.IntWithAggregatesFilter<"User"> | number
+  rewardPoints?: Prisma.IntWithAggregatesFilter<"User"> | number
 }
 
 export type UserCreateInput = {
@@ -352,12 +419,15 @@ export type UserCreateInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -374,10 +444,13 @@ export type UserUncheckedCreateInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUpdateInput = {
@@ -392,12 +465,15 @@ export type UserUpdateInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -414,10 +490,13 @@ export type UserUncheckedUpdateInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -434,6 +513,8 @@ export type UserCreateManyInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
 }
 
 export type UserUpdateManyMutationInput = {
@@ -448,6 +529,8 @@ export type UserUpdateManyMutationInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -464,6 +547,8 @@ export type UserUncheckedUpdateManyInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserOrderByRelevanceInput = {
@@ -486,6 +571,13 @@ export type UserCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
+}
+
+export type UserAvgOrderByAggregateInput = {
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -502,6 +594,8 @@ export type UserMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -518,6 +612,13 @@ export type UserMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
+}
+
+export type UserSumOrderByAggregateInput = {
+  xp?: Prisma.SortOrder
+  rewardPoints?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -558,6 +659,14 @@ export type EnumUserStatusFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type UserCreateNestedOneWithoutSessionsInput = {
@@ -702,6 +811,20 @@ export type UserUpdateOneWithoutApprovedCarbonRecordsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApprovedCarbonRecordsInput, Prisma.UserUpdateWithoutApprovedCarbonRecordsInput>, Prisma.UserUncheckedUpdateWithoutApprovedCarbonRecordsInput>
 }
 
+export type UserCreateNestedOneWithoutSocialPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSocialPostsInput, Prisma.UserUncheckedCreateWithoutSocialPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSocialPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSocialPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSocialPostsInput, Prisma.UserUncheckedCreateWithoutSocialPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSocialPostsInput
+  upsert?: Prisma.UserUpsertWithoutSocialPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSocialPostsInput, Prisma.UserUpdateWithoutSocialPostsInput>, Prisma.UserUncheckedUpdateWithoutSocialPostsInput>
+}
+
 export type UserCreateWithoutSessionsInput = {
   id: string
   name: string
@@ -714,11 +837,14 @@ export type UserCreateWithoutSessionsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -735,9 +861,12 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -768,11 +897,14 @@ export type UserUpdateWithoutSessionsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -789,9 +921,12 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -806,11 +941,14 @@ export type UserCreateWithoutAccountsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -827,9 +965,12 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -860,11 +1001,14 @@ export type UserUpdateWithoutAccountsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -881,9 +1025,12 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutOrganizationInput = {
@@ -898,11 +1045,14 @@ export type UserCreateWithoutOrganizationInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutOrganizationInput = {
@@ -918,10 +1068,13 @@ export type UserUncheckedCreateWithoutOrganizationInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutOrganizationInput = {
@@ -967,6 +1120,8 @@ export type UserScalarWhereInput = {
   status?: Prisma.EnumUserStatusFilter<"User"> | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  xp?: Prisma.IntFilter<"User"> | number
+  rewardPoints?: Prisma.IntFilter<"User"> | number
 }
 
 export type UserCreateWithoutDepartmentInput = {
@@ -981,11 +1136,14 @@ export type UserCreateWithoutDepartmentInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutDepartmentInput = {
@@ -1001,10 +1159,13 @@ export type UserUncheckedCreateWithoutDepartmentInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutDepartmentInput = {
@@ -1045,11 +1206,14 @@ export type UserCreateWithoutSubmittedCarbonRecordsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutSubmittedCarbonRecordsInput = {
@@ -1066,9 +1230,12 @@ export type UserUncheckedCreateWithoutSubmittedCarbonRecordsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutSubmittedCarbonRecordsInput = {
@@ -1088,11 +1255,14 @@ export type UserCreateWithoutApprovedCarbonRecordsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
   department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
+  socialPosts?: Prisma.SocialPostCreateNestedManyWithoutAuthorInput
 }
 
 export type UserUncheckedCreateWithoutApprovedCarbonRecordsInput = {
@@ -1109,9 +1279,12 @@ export type UserUncheckedCreateWithoutApprovedCarbonRecordsInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
+  socialPosts?: Prisma.SocialPostUncheckedCreateNestedManyWithoutAuthorInput
 }
 
 export type UserCreateOrConnectWithoutApprovedCarbonRecordsInput = {
@@ -1142,11 +1315,14 @@ export type UserUpdateWithoutSubmittedCarbonRecordsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubmittedCarbonRecordsInput = {
@@ -1163,9 +1339,12 @@ export type UserUncheckedUpdateWithoutSubmittedCarbonRecordsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUpsertWithoutApprovedCarbonRecordsInput = {
@@ -1191,11 +1370,14 @@ export type UserUpdateWithoutApprovedCarbonRecordsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApprovedCarbonRecordsInput = {
@@ -1212,9 +1394,116 @@ export type UserUncheckedUpdateWithoutApprovedCarbonRecordsInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutSocialPostsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  role?: string
+  employeeCode?: string | null
+  designation?: string | null
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
+  organization?: Prisma.OrganizationCreateNestedOneWithoutEmployeesInput
+  department?: Prisma.DepartmentCreateNestedOneWithoutEmployeesInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  submittedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutSubmittedByInput
+  approvedCarbonRecords?: Prisma.CarbonRecordCreateNestedManyWithoutApprovedByInput
+}
+
+export type UserUncheckedCreateWithoutSocialPostsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  role?: string
+  organizationId?: string | null
+  departmentId?: string | null
+  employeeCode?: string | null
+  designation?: string | null
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  submittedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutSubmittedByInput
+  approvedCarbonRecords?: Prisma.CarbonRecordUncheckedCreateNestedManyWithoutApprovedByInput
+}
+
+export type UserCreateOrConnectWithoutSocialPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSocialPostsInput, Prisma.UserUncheckedCreateWithoutSocialPostsInput>
+}
+
+export type UserUpsertWithoutSocialPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSocialPostsInput, Prisma.UserUncheckedUpdateWithoutSocialPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSocialPostsInput, Prisma.UserUncheckedCreateWithoutSocialPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSocialPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSocialPostsInput, Prisma.UserUncheckedUpdateWithoutSocialPostsInput>
+}
+
+export type UserUpdateWithoutSocialPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  employeeCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
+  department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
+  approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSocialPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departmentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  employeeCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  designation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
+  approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateManyOrganizationInput = {
@@ -1230,6 +1519,8 @@ export type UserCreateManyOrganizationInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
 }
 
 export type UserUpdateWithoutOrganizationInput = {
@@ -1244,11 +1535,14 @@ export type UserUpdateWithoutOrganizationInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   department?: Prisma.DepartmentUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizationInput = {
@@ -1264,10 +1558,13 @@ export type UserUncheckedUpdateWithoutOrganizationInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutOrganizationInput = {
@@ -1283,6 +1580,8 @@ export type UserUncheckedUpdateManyWithoutOrganizationInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserCreateManyDepartmentInput = {
@@ -1298,6 +1597,8 @@ export type UserCreateManyDepartmentInput = {
   status?: $Enums.UserStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  xp?: number
+  rewardPoints?: number
 }
 
 export type UserUpdateWithoutDepartmentInput = {
@@ -1312,11 +1613,14 @@ export type UserUpdateWithoutDepartmentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   organization?: Prisma.OrganizationUpdateOneWithoutEmployeesNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepartmentInput = {
@@ -1332,10 +1636,13 @@ export type UserUncheckedUpdateWithoutDepartmentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   submittedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutSubmittedByNestedInput
   approvedCarbonRecords?: Prisma.CarbonRecordUncheckedUpdateManyWithoutApprovedByNestedInput
+  socialPosts?: Prisma.SocialPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutDepartmentInput = {
@@ -1351,6 +1658,8 @@ export type UserUncheckedUpdateManyWithoutDepartmentInput = {
   status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  xp?: Prisma.IntFieldUpdateOperationsInput | number
+  rewardPoints?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1363,6 +1672,7 @@ export type UserCountOutputType = {
   accounts: number
   submittedCarbonRecords: number
   approvedCarbonRecords: number
+  socialPosts: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1370,6 +1680,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   submittedCarbonRecords?: boolean | UserCountOutputTypeCountSubmittedCarbonRecordsArgs
   approvedCarbonRecords?: boolean | UserCountOutputTypeCountApprovedCarbonRecordsArgs
+  socialPosts?: boolean | UserCountOutputTypeCountSocialPostsArgs
 }
 
 /**
@@ -1410,6 +1721,13 @@ export type UserCountOutputTypeCountApprovedCarbonRecordsArgs<ExtArgs extends ru
   where?: Prisma.CarbonRecordWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSocialPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SocialPostWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1425,12 +1743,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  xp?: boolean
+  rewardPoints?: boolean
   organization?: boolean | Prisma.User$organizationArgs<ExtArgs>
   department?: boolean | Prisma.User$departmentArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   submittedCarbonRecords?: boolean | Prisma.User$submittedCarbonRecordsArgs<ExtArgs>
   approvedCarbonRecords?: boolean | Prisma.User$approvedCarbonRecordsArgs<ExtArgs>
+  socialPosts?: boolean | Prisma.User$socialPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1450,9 +1771,11 @@ export type UserSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  xp?: boolean
+  rewardPoints?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "organizationId" | "departmentId" | "employeeCode" | "designation" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "organizationId" | "departmentId" | "employeeCode" | "designation" | "status" | "createdAt" | "updatedAt" | "xp" | "rewardPoints", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.User$organizationArgs<ExtArgs>
   department?: boolean | Prisma.User$departmentArgs<ExtArgs>
@@ -1460,6 +1783,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   submittedCarbonRecords?: boolean | Prisma.User$submittedCarbonRecordsArgs<ExtArgs>
   approvedCarbonRecords?: boolean | Prisma.User$approvedCarbonRecordsArgs<ExtArgs>
+  socialPosts?: boolean | Prisma.User$socialPostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1472,6 +1796,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     submittedCarbonRecords: Prisma.$CarbonRecordPayload<ExtArgs>[]
     approvedCarbonRecords: Prisma.$CarbonRecordPayload<ExtArgs>[]
+    socialPosts: Prisma.$SocialPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1487,6 +1812,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     status: $Enums.UserStatus
     createdAt: Date
     updatedAt: Date
+    xp: number
+    rewardPoints: number
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1833,6 +2160,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   submittedCarbonRecords<T extends Prisma.User$submittedCarbonRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$submittedCarbonRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarbonRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   approvedCarbonRecords<T extends Prisma.User$approvedCarbonRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvedCarbonRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarbonRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  socialPosts<T extends Prisma.User$socialPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$socialPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SocialPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1875,6 +2203,8 @@ export interface UserFieldRefs {
   readonly status: Prisma.FieldRef<"User", 'UserStatus'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly xp: Prisma.FieldRef<"User", 'Int'>
+  readonly rewardPoints: Prisma.FieldRef<"User", 'Int'>
 }
     
 
@@ -2354,6 +2684,30 @@ export type User$approvedCarbonRecordsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.CarbonRecordScalarFieldEnum | Prisma.CarbonRecordScalarFieldEnum[]
+}
+
+/**
+ * User.socialPosts
+ */
+export type User$socialPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SocialPost
+   */
+  select?: Prisma.SocialPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SocialPost
+   */
+  omit?: Prisma.SocialPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SocialPostInclude<ExtArgs> | null
+  where?: Prisma.SocialPostWhereInput
+  orderBy?: Prisma.SocialPostOrderByWithRelationInput | Prisma.SocialPostOrderByWithRelationInput[]
+  cursor?: Prisma.SocialPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SocialPostScalarFieldEnum | Prisma.SocialPostScalarFieldEnum[]
 }
 
 /**

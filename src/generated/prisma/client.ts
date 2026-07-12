@@ -81,3 +81,13 @@ export type EmissionFactor = Prisma.EmissionFactorModel
  * 
  */
 export type CarbonRecord = Prisma.CarbonRecordModel
+/**
+ * Model EmissionPolicy
+ * 
+ */
+export type EmissionPolicy = Prisma.EmissionPolicyModel
+/**
+ * Model SocialPost
+ * 
+ */
+export type SocialPost = Prisma.SocialPostModel
