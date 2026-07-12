@@ -7,18 +7,39 @@ datasource db {
   provider = "mysql"
 }
 
-model User {
-  id            String    @id
-  name          String
-  email         String    @unique
-  emailVerified Boolean   @default(false)
-  image         String?
-  role          String    @default("USER")
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
+enum UserStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
 
+model User {
+  id            String  @id
+  name          String
+  email         String  @unique
+  emailVerified Boolean @default(false)
+  image         String?
+  role          String  @default("USER")
+
+  organizationId String?
+  departmentId   String?
+
+  employeeCode String?
+  designation  String?
+  status       UserStatus @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  department   Department?   @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  sessions Session[]
+  accounts Account[]
+
+  @@index([organizationId])
+  @@index([departmentId])
+  @@index([status])
   @@map("user")
 }
 
@@ -31,18 +52,21 @@ model Session {
   ipAddress String?
   userAgent String?
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@map("session")
 }
 
 model Account {
-  id                    String    @id
-  accountId             String
-  providerId            String
-  userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         String @id
+  accountId  String
+  providerId String
+  userId     String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   accessToken           String?   @db.Text
   refreshToken          String?   @db.Text
   idToken               String?   @db.Text
@@ -67,4 +91,53 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Organization {
+  id String @id @default(cuid())
+
+  name      String
+  legalName String?
+  slug      String  @unique
+  gstin     String? @unique
+  joinCode  String? @unique
+
+  industry    String?
+  country     String  @default("India")
+  companySize String?
+
+  status Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  departments Department[]
+  employees   User[]
+
+  @@index([name])
+  @@map("organization")
+}
+
+model Department {
+  id String @id @default(cuid())
+
+  organizationId String
+
+  name String
+  code String
+
+  description   String?
+  employeeCount Int     @default(0)
+  status        Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  employees    User[]
+
+  @@unique([organizationId, code])
+  @@index([organizationId])
+  @@index([status])
+  @@map("department")
 }
